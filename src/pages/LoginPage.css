@@ -1,0 +1,17 @@
+.login-container {
+	height: 100%;
+	width: 100%;
+	background-image: url("/public/login-background.png");
+	background-size: 100% auto;
+	display: flex;
+}
+
+.left_child,
+.right_child {
+	color: white;
+	flex: 1;
+}
+
+.right_child {
+	text-align: right;
+}
