@@ -1,0 +1,9 @@
+.movie_poster {
+	background-image: url("/public/movie-poster.jpg");
+	background-repeat: no-repeat;
+
+	background-size: cover;
+	height: 95%;
+	width: 95%;
+	border-radius: 8px;
+}
