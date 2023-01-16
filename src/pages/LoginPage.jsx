@@ -8,11 +8,19 @@ const LoginPage = () => {
 	return (
 		<div className="login-container">
 			<div className="left_child">
-				<MoviePosterContainer></MoviePosterContainer>
+				<p className="left_p">The Latest Movies</p>
+				<MoviePosterContainer
+					picUrl="/movie-poster.jpg"
+					className={"movie_poster_container__red"}
+				></MoviePosterContainer>
 			</div>
 			<InputContainer></InputContainer>
 			<div className="right_child">
-				<MoviePosterContainer></MoviePosterContainer>
+				<MoviePosterContainer
+					picUrl="/movie-poster-2.jpg"
+					className={"movie_poster_container__blue"}
+				></MoviePosterContainer>
+				<p>All In One Place</p>
 			</div>
 		</div>
 	);

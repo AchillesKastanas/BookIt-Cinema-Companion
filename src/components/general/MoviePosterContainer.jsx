@@ -3,10 +3,10 @@ import React from "react";
 import MoviePoster from "./MoviePoster";
 import "./MoviePosterContainer.css";
 
-const MoviePosterContainer = () => {
+const MoviePosterContainer = ({ picUrl, className }) => {
 	return (
-		<div className="movie_poster_container">
-			<MoviePoster></MoviePoster>
+		<div className={className}>
+			<MoviePoster picUrl={picUrl}></MoviePoster>
 		</div>
 	);
 };

@@ -6,12 +6,32 @@
 	display: flex;
 }
 
-.left_child,
-.right_child {
+.left_child {
 	color: white;
 	flex: 1;
+	/* Center content */
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+p {
+	font-size: 32px;
+	font-weight: bold;
+}
+
+.left_p {
+	color: #181a1c;
 }
 
 .right_child {
 	text-align: right;
+	color: white;
+	flex: 1;
+	/* Center content */
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
 }

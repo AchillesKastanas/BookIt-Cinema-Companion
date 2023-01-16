@@ -1,7 +1,19 @@
-.movie_poster_container {
+.movie_poster_container__red {
 	background-color: #ad3c3c;
-	height: 50%;
-	width: 60%;
+	height: 70%;
+	width: 65%;
+	border-radius: 8px;
+	/* Center content */
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+.movie_poster_container__blue {
+	background-color: #30475e;
+	height: 70%;
+	width: 65%;
 	border-radius: 8px;
 	/* Center content */
 	display: flex;
