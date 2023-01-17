@@ -2,9 +2,11 @@ import React from "react";
 
 import classes from "./Button.module.css";
 
-const Button = ({ value, className, onChange }) => (
+const Button = ({ value, className, onClick }) => (
 	<>
-		<button className={classes[`${className}`]}>{value}</button>
+		<button className={classes[`${className}`]} onClick={onClick}>
+			{value}
+		</button>
 	</>
 );
 

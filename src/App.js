@@ -1,15 +1,31 @@
 import React, { useState } from "react";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./App.css";
 
 import RegisterPage from "./pages/RegisterPage";
+import LoginPage from "./pages/LoginPage";
+import PageManager from "./managers/PageManager";
 import HomePage from "./pages/HomePage";
 
-function App() {
-	const [isLoggedIn, setIsLoggedIn] = useState(false);
+const router = createBrowserRouter([
+	{
+		path: "/",
+		element: <PageManager />,
+	},
+	{
+		path: "/register",
+		element: <RegisterPage />,
+	},
+	{
+		path: "/login",
+		element: <LoginPage />,
+	},
+]);
 
+function App() {
 	return (
 		<div className="main_container">
-			{isLoggedIn ? <HomePage></HomePage> : <RegisterPage></RegisterPage>}
+			<RouterProvider router={router} />
 		</div>
 	);
 }
