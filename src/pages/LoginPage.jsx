@@ -1,21 +1,21 @@
 import React from "react";
 import InputContainer from "../components/page_components/login_page/InputContainer";
 
-import "./LoginPage.css";
+import classes from "./LoginPage.module.css";
 import MoviePosterContainer from "../components/general/MoviePosterContainer";
 
 const LoginPage = () => {
 	return (
-		<div className="login-container">
-			<div className="left_child">
-				<p className="left_p">The Latest Movies</p>
+		<div className={classes.loginContainer}>
+			<div className={classes.leftChild}>
+				<p className={classes.leftP}>The Latest Movies</p>
 				<MoviePosterContainer
 					picUrl="/movie-poster.jpg"
 					className={"movie_poster_container__red"}
 				></MoviePosterContainer>
 			</div>
 			<InputContainer></InputContainer>
-			<div className="right_child">
+			<div className={classes.rightChild}>
 				<MoviePosterContainer
 					picUrl="/movie-poster-2.jpg"
 					className={"movie_poster_container__blue"}

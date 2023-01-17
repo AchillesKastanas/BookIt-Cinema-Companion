@@ -1,10 +1,10 @@
 import React from "react";
 
-import "./Button.css";
+import classes from "./Button.module.css";
 
 const Button = ({ value, className, onChange }) => (
 	<>
-		<button className={className}>{value}</button>
+		<button className={classes[`${className}`]}>{value}</button>
 	</>
 );
 

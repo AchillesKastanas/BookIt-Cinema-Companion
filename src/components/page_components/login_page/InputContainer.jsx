@@ -1,17 +1,17 @@
 import React from "react";
 
-import "./InputContainer.css";
+import classes from "./InputContainer.module.css";
 import InputField from "../../general/InputField";
 import Button from "../../general/Button";
 
 const InputContainer = () => {
 	return (
-		<div className="input_container">
-			<div className="input_container__top">
+		<div className={classes.inputContainer}>
+			<div className={classes.inputContainerTop}>
 				<InputField placeholder="Username"></InputField>
 				<InputField placeholder="Password"></InputField>
 			</div>
-			<div className="input_container__bottom">
+			<div className={classes.inputContainerBottom}>
 				<Button value="Login" className="red_button" />
 				<Button value="Login with Google" className="" />
 				<Button value="Sign Up" className="" />

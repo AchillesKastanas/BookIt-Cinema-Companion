@@ -1,4 +1,4 @@
-.login-container {
+.loginContainer {
 	height: 100%;
 	width: 100%;
 	background-image: url("/public/login-background.png");
@@ -6,7 +6,7 @@
 	display: flex;
 }
 
-.left_child {
+.leftChild {
 	color: white;
 	flex: 1;
 	/* Center content */
@@ -21,11 +21,11 @@ p {
 	font-weight: bold;
 }
 
-.left_p {
+.leftP {
 	color: #181a1c;
 }
 
-.right_child {
+.rightChild {
 	text-align: right;
 	color: white;
 	flex: 1;

@@ -1,6 +1,6 @@
 import React from "react";
 
-import "./InputField.css";
+import classes from "./InputField.module.css";
 
 const InputField = ({ value, label, name, placeholder, type, onChange }) => (
 	<>
@@ -8,7 +8,7 @@ const InputField = ({ value, label, name, placeholder, type, onChange }) => (
 			type={type}
 			value={value}
 			name={name}
-			className="input_field"
+			className={classes.inputField}
 			onChange={onChange}
 			placeholder={placeholder}
 		/>

@@ -1,4 +1,4 @@
-.input_container {
+.inputContainer {
 	background-color: #181a1c;
 	color: white;
 	flex: 1;
@@ -12,7 +12,7 @@
 	justify-content: space-between;
 }
 
-.input_container__top {
+.inputContainerTop {
 	width: 100%;
 	padding-top: 20px;
 
@@ -23,7 +23,7 @@
 	justify-content: center;
 }
 
-.input_container__bottom {
+.inputContainerBottom {
 	width: 100%;
 	padding-bottom: 20px;
 

@@ -1,11 +1,11 @@
 import React from "react";
 
-import "./MoviePoster.css";
+import classes from "./MoviePoster.module.css";
 
 const MoviePoster = ({ picUrl }) => {
 	const style = { backgroundImage: `url(${picUrl})` };
 
-	return <div className="movie_poster" style={style}></div>;
+	return <div className={classes.moviePoster} style={style}></div>;
 };
 
 export default MoviePoster;
