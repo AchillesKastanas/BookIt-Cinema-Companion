@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./App.css";
 
-import LoginPage from "./pages/LoginPage";
+import RegisterPage from "./pages/RegisterPage";
 import HomePage from "./pages/HomePage";
 
 function App() {
@@ -9,7 +9,7 @@ function App() {
 
 	return (
 		<div className="main_container">
-			{isLoggedIn ? <HomePage></HomePage> : <LoginPage></LoginPage>}
+			{isLoggedIn ? <HomePage></HomePage> : <RegisterPage></RegisterPage>}
 		</div>
 	);
 }
