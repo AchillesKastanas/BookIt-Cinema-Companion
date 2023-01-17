@@ -1,7 +1,7 @@
 import React from "react";
 
 const HomePage = () => {
-	return <>Eimai to home page</>;
+	return <></>;
 };
 
 export default HomePage;
