@@ -32,5 +32,6 @@ button:hover {
 }
 
 .book_button {
+	margin-top: 200px;
 	float: right;
 }
