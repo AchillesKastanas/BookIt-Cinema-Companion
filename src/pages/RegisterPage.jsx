@@ -2,24 +2,24 @@ import React from "react";
 import InputContainer from "../components/page_components/register_page/InputContainer";
 
 import classes from "./RegisterPage.module.css";
-import MoviePosterContainer from "../components/general/MoviePosterContainer";
+import ColoredContainer from "../components/general/ColoredContainer";
 
 const RegisterPage = () => {
 	return (
 		<div className={classes.registerContainer}>
 			<div className={classes.leftChild}>
 				<p className={classes.leftP}>The Latest Movies</p>
-				<MoviePosterContainer
+				<ColoredContainer
 					picUrl="/movie-poster.jpg"
-					className={"movie_poster_container__red"}
-				></MoviePosterContainer>
+					className={"colored_container__red"}
+				></ColoredContainer>
 			</div>
 			<InputContainer></InputContainer>
 			<div className={classes.rightChild}>
-				<MoviePosterContainer
+				<ColoredContainer
 					picUrl="/movie-poster-2.jpg"
-					className={"movie_poster_container__blue"}
-				></MoviePosterContainer>
+					className={"colored_container__blue"}
+				></ColoredContainer>
 				<p>All In One Place</p>
 			</div>
 		</div>

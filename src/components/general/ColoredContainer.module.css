@@ -1,7 +1,8 @@
-.movie_poster_container__red {
+.colored_container__red {
 	background-color: #ad3c3c;
-	height: 70%;
-	width: 65%;
+	height: fit-content;
+	width: fit-content;
+	padding: 10px;
 	border-radius: 8px;
 	/* Center content */
 	display: flex;
@@ -11,14 +12,15 @@
 	transition: transform 0.2s;
 }
 
-.movie_poster_container__red :hover {
+.colored_container__red :hover {
 	transform: scale(1.05);
 }
 
-.movie_poster_container__blue {
+.colored_container__blue {
 	background-color: #30475e;
-	height: 70%;
-	width: 70%;
+	height: fit-content;
+	width: fit-content;
+	padding: 10px;
 	border-radius: 8px;
 	/* Center content */
 	display: flex;
@@ -27,6 +29,6 @@
 	justify-content: center;
 }
 
-.movie_poster_container__blue :hover {
+.colored_container__blue :hover {
 	transform: scale(1.05);
 }

@@ -1,9 +1,9 @@
 import React from "react";
 
 import MoviePoster from "./MoviePoster";
-import classes from "./MoviePosterContainer.module.css";
+import classes from "./ColoredContainer.module.css";
 
-const MoviePosterContainer = ({ picUrl, className }) => {
+const ColoredContainer = ({ picUrl, className }) => {
 	return (
 		<div className={classes[`${className}`]}>
 			<MoviePoster picUrl={picUrl}></MoviePoster>
@@ -11,4 +11,4 @@ const MoviePosterContainer = ({ picUrl, className }) => {
 	);
 };
 
-export default MoviePosterContainer;
+export default ColoredContainer;

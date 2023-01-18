@@ -1,7 +1,7 @@
 .moviePoster {
 	background-repeat: no-repeat;
 	background-size: cover;
-	height: 95%;
-	width: 95%;
+	height: 60vh;
+	width: 20vw;
 	border-radius: 8px;
 }
