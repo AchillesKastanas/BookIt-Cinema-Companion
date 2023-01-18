@@ -21,6 +21,7 @@ li :link {
 	text-decoration: none;
 	display: inline-block;
 	margin-right: 50px;
+	transition: all 0.3s ease-in;
 }
 
 li :visited {
@@ -30,6 +31,14 @@ li :visited {
 	text-decoration: none;
 	display: inline-block;
 	margin-right: 50px;
+	transition: all 0.3s ease-in;
+}
+
+li :hover {
+	background-color: #f5f5f5;
+	color: #181a1c;
+	border-radius: 8px;
+	padding: 10px;
 }
 
 .userProfile {
