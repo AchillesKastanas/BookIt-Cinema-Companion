@@ -4,6 +4,7 @@
 	height: 60vh;
 	width: 20vw;
 	border-radius: 8px;
+	transition: all 0.2s ease-in-out;
 }
 
 .moviePosterSmall {
@@ -16,5 +17,9 @@
 }
 
 .moviePosterSmall:hover {
+	transform: scale(1.1);
+}
+
+.moviePoster:hover {
 	transform: scale(1.1);
 }
