@@ -20,7 +20,7 @@ const InputContainer = () => {
 			</div>
 			<div className={classes.inputContainerBottom}>
 				<Button value="Login" className="red_button" />
-				<Button value="Login with Google" className="" />
+				<Button value="Login with Google" />
 				<Button value="Sign Up" onClick={handleClick} />
 			</div>
 		</div>

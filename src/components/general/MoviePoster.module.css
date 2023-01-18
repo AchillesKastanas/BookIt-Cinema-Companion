@@ -5,3 +5,11 @@
 	width: 20vw;
 	border-radius: 8px;
 }
+
+.moviePosterSmall {
+	background-repeat: no-repeat;
+	background-size: cover;
+	height: 300px;
+	width: 200px;
+	border-radius: 8px;
+}
