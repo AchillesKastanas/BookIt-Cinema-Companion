@@ -57,13 +57,8 @@ li :hover {
 	width: 60px;
 	border-radius: 8px;
 	background-color: white;
-	transition: all 0.3s ease-in;
 	background-repeat: no-repeat;
 	background-size: 70%;
 	background-position: center;
 	background-image: url("../../../public/user-icon.png");
-}
-
-.userProfile:hover {
-	transform: scale(1.1);
 }
