@@ -5,8 +5,9 @@ import HomePage from "../pages/HomePage";
 import RootPage from "../pages/RootPage";
 import Navbar from "../components/general/Navbar";
 
-const PageManager = () => {
+const AuthManager = () => {
 	const [isLoggedIn, setIsLoggedIn] = useState(true);
+	//Check session storage if a valid JWT exists
 
 	return isLoggedIn ? (
 		<>
@@ -18,4 +19,4 @@ const PageManager = () => {
 	);
 };
 
-export default PageManager;
+export default AuthManager;
