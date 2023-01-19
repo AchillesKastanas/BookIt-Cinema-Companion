@@ -14,7 +14,7 @@ const Navbar = () => {
 
 	return (
 		<div className={classes.nav}>
-			{location.pathname !== "/ !!! CHANGE_THIS !!!" && (
+			{location.pathname !== "/home" && (
 				<div className={classes.backButtonContainer}>
 					<Button
 						value="Go Back"
@@ -23,11 +23,15 @@ const Navbar = () => {
 					/>
 				</div>
 			)}
-			<nav>
-				<li className={classes.link}>
-					<Link to="/asd">Reservations</Link>
-				</li>
-			</nav>
+			<div className={classes.linksContainer}>
+				{location.pathname !== "/reservations" && (
+					<nav>
+						<li className={classes.link}>
+							<Link to="/reservations">Reservations</Link>
+						</li>
+					</nav>
+				)}
+			</div>
 			<div className={classes.profileContainer}>
 				<div className={classes.userProfile}></div>
 			</div>

@@ -19,6 +19,7 @@ button:hover {
 	background-color: #181a1c;
 	border: 3px solid #f5f5f5;
 	color: #f5f5f5;
+	cursor: pointer;
 }
 
 .red_button {
@@ -29,6 +30,31 @@ button:hover {
 	background-color: #181a1c;
 	border: 3px solid #f05454;
 	color: #f05454;
+	cursor: pointer;
+}
+
+.green_button {
+	background-color: #80ff7d;
+	margin-top: 200px;
+	float: right;
+}
+
+.green_button:hover {
+	background-color: #181a1c;
+	border: 3px solid #80ff7d;
+	color: #80ff7d;
+	cursor: pointer;
+}
+
+.unclickable_button {
+	background-color: #181a1c;
+	color: #f05454;
+	margin-top: 200px;
+	float: right;
+}
+
+.unclickable_button:hover {
+	cursor: not-allowed;
 }
 
 .book_button {

@@ -4,14 +4,27 @@ import "./App.css";
 
 import RegisterPage from "./pages/RegisterPage";
 import LoginPage from "./pages/LoginPage";
-import AuthManager from "./managers/PageManager";
+import AuthManager from "./managers/AuthManager";
 import HomePage from "./pages/HomePage";
+import ReservationsPage from "./pages/ReservationsPage";
 
 //If the link is something else than /login or /register check if user is looged in, in AuthManager
 const router = createBrowserRouter([
 	{
 		path: "home",
-		element: <AuthManager />,
+		element: (
+			<AuthManager>
+				<HomePage />
+			</AuthManager>
+		),
+	},
+	{
+		path: "reservations",
+		element: (
+			<AuthManager>
+				<ReservationsPage />
+			</AuthManager>
+		),
 	},
 	{
 		path: "register",

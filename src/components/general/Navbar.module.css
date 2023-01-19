@@ -12,7 +12,7 @@
 	justify-content: end;
 }
 
-nav {
+.linksContainer {
 	list-style: none;
 	flex: 0.8;
 }
@@ -27,7 +27,6 @@ li :link {
 }
 
 li :visited {
-	float: right;
 	color: #f5f5f5;
 	font-weight: bold;
 	text-align: center;
