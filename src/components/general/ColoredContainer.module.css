@@ -50,10 +50,9 @@
 
 .colored_container__blue__reserve_side {
 	background-color: #30475e;
-	height: 85%;
+	height: 80%;
 	width: 100%;
 	padding: 10px;
-	margin-top: 20px;
 	margin-bottom: 20px;
 	border-radius: 8px;
 	flex: 0.2;
@@ -66,10 +65,9 @@
 
 .colored_container__blue__reserve_center {
 	background-color: #30475e;
-	height: 85%;
+	height: 80%;
 	width: 100%;
 	padding: 10px;
-	margin-top: 20px;
 	margin-bottom: 20px;
 	border-radius: 8px;
 	flex: 0.8;
