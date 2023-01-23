@@ -7,8 +7,9 @@ import LoginPage from "./pages/LoginPage";
 import AuthManager from "./managers/AuthManager";
 import HomePage from "./pages/HomePage";
 import ReservationsPage from "./pages/ReservationsPage";
+import BookingPage from "./pages/BookingPage";
 
-//If the link is something else than /login or /register check if user is looged in, in AuthManager
+//If the link is something else than /login or /register check if user is logged in, in AuthManager
 const router = createBrowserRouter([
 	{
 		path: "home",
@@ -23,6 +24,14 @@ const router = createBrowserRouter([
 		element: (
 			<AuthManager>
 				<ReservationsPage />
+			</AuthManager>
+		),
+	},
+	{
+		path: "reserve/:id",
+		element: (
+			<AuthManager>
+				<BookingPage />
 			</AuthManager>
 		),
 	},

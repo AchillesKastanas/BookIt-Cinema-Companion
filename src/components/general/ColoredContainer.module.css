@@ -36,11 +36,45 @@
 .colored_container__blue__movie_details {
 	background-color: #30475e;
 	height: fit-content;
-	width: 95vw;
+	width: 97%;
 	padding: 10px;
 	margin-top: 20px;
 	margin-bottom: 20px;
 	border-radius: 8px;
+	/* Center content */
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+.colored_container__blue__reserve_side {
+	background-color: #30475e;
+	height: 85%;
+	width: 100%;
+	padding: 10px;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	border-radius: 8px;
+	flex: 0.2;
+	/* Center content */
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+.colored_container__blue__reserve_center {
+	background-color: #30475e;
+	height: 85%;
+	width: 100%;
+	padding: 10px;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	border-radius: 8px;
+	flex: 0.8;
+	margin-left: 10px;
+	margin-right: 10px;
 	/* Center content */
 	display: flex;
 	flex-direction: column;
