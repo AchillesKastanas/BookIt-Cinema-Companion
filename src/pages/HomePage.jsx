@@ -1,4 +1,5 @@
 import React from "react";
+import { Link, useNavigate } from "react-router-dom";
 
 import classes from "./HomePage.module.css";
 import ColoredContainer from "../components/general/ColoredContainer";
@@ -6,6 +7,12 @@ import MoviePoster from "../components/general/MoviePoster";
 import Button from "../components/general/Button";
 
 const HomePage = () => {
+	const navigate = useNavigate();
+
+	function handleClick() {
+		navigate("/reserve/MOVIE_ID");
+	}
+
 	return (
 		<div className={classes.homeContainer}>
 			<p className={classes.titleBig}>Welcome back [username]</p>
@@ -31,7 +38,11 @@ const HomePage = () => {
 						</p>
 					</div>
 					<div className={classes.movieDetailsButton}>
-						<Button className="book_button" value="Book now" />
+						<Button
+							className="book_button"
+							value="Book now"
+							onClick={handleClick}
+						/>
 					</div>
 				</div>
 			</ColoredContainer>
@@ -54,7 +65,11 @@ const HomePage = () => {
 						</p>
 					</div>
 					<div className={classes.movieDetailsButton}>
-						<Button className="book_button" value="Book now" />
+						<Button
+							className="book_button"
+							value="Book now"
+							onClick={handleClick}
+						/>
 					</div>
 				</div>
 			</ColoredContainer>

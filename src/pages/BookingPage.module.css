@@ -8,6 +8,25 @@
 	color: #f5f5f5;
 }
 
+.verticalContainer {
+	height: 100%;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+}
+
+.horizontalContainer {
+	display: flex;
+	flex-direction: row;
+	margin-bottom: 100px;
+}
+
+.horizontalContainerCentered {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+}
+
 .calendar {
 	width: 100%;
 	border-radius: 8px;
@@ -17,7 +36,7 @@
 	font-size: 15px;
 }
 
-.calendar button{
+.calendar button {
 	font-size: 15px;
 	width: 10px;
 	height: 50px;
@@ -38,9 +57,15 @@
 	padding-left: 20px;
 }
 
+.titleMid {
+	font-weight: semi-bold;
+	margin-top: 5px;
+	font-size: 28px;
+}
+
 .titleSmall {
 	font-weight: normal;
-	margin-top: 5px;
+	margin-top: 0px;
 	font-size: 24px;
 }
 
@@ -72,4 +97,11 @@
 
 .movieDetailsButton {
 	flex: 0.2;
+}
+
+.cartItems {
+	flex: 2;
+	overflow: auto;
+	display: flex;
+	flex-direction: column-reverse;
 }

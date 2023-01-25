@@ -61,3 +61,75 @@ button:hover {
 	margin-top: 200px;
 	float: right;
 }
+
+.roomButton {
+	background-color: #f5f5f5;
+	border: none;
+	border-radius: 8px;
+	color: #181a1c;
+	font-weight: bold;
+	font-size: 20px;
+	padding: 15px 32px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	height: 75px;
+	width: 200px;
+	margin: 5px;
+	transition: all 0.3s ease-in;
+}
+
+.roomButton:hover {
+	background-color: #181a1c;
+	border: 3px solid #f5f5f5;
+	color: #f5f5f5;
+	cursor: pointer;
+}
+
+.roomButtonActive {
+	background-color: #181a1c;
+	border: 3px solid #f5f5f5;
+	color: #f5f5f5;
+	cursor: pointer;
+	font-weight: bold;
+	font-size: 20px;
+	padding: 15px 32px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	height: 75px;
+	width: 200px;
+	margin: 5px;
+	transition: all 0.3s ease-in;
+}
+
+.removeButton {
+	background-color: #f5f5f5;
+	border: none;
+	border-radius: 8px;
+	color: #181a1c;
+	font-weight: bold;
+	font-size: 20px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	height: 55px;
+	width: 135px;
+	transition: all 0.3s ease-in;
+}
+
+.orderButton {
+	flex: 0.1;
+	background-color: #f5f5f5;
+	border: none;
+	border-radius: 8px;
+	color: #181a1c;
+	font-weight: bold;
+	font-size: 20px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	height: 55px;
+	width: 95%;
+	transition: all 0.3s ease-in;
+}

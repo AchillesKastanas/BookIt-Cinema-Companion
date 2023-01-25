@@ -3,7 +3,7 @@
 	grid-template-columns: repeat(10, 1fr);
 	padding: 10px;
 }
-  
+
 .gridItem {
 	background-color: #f5f5f5;
 	color: #213243;
@@ -13,13 +13,25 @@
 	text-align: center;
 	font-weight: bold;
 	border-radius: 8px;
-    transition: all 0.3s ease-in;
+	transition: all 0.3s ease-in;
 }
 
 .gridItem:hover {
 	background-color: #181a1c;
 	color: #f5f5f5;
-    cursor: pointer;
+	cursor: pointer;
+}
+
+.gridItemActive {
+	background-color: #181a1c;
+	color: #f5f5f5;
+	padding: 20px;
+	margin: 5px;
+	font-size: 30px;
+	text-align: center;
+	font-weight: bold;
+	border-radius: 8px;
+	transition: all 0.3s ease-in;
 }
 
 .gridItemReserved {
@@ -35,7 +47,7 @@
 }
 
 .gridItemReserved:hover {
-    background-color: #181a1c;
+	background-color: #181a1c;
 	color: #f05454;
 	cursor: not-allowed;
 }
