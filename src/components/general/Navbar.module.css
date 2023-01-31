@@ -43,12 +43,12 @@ li :hover {
 	padding: 10px;
 }
 
-.profileContainer {
-	flex: 0.05;
-}
-
 .backButtonContainer {
 	flex: 0.2;
+}
+
+.profileContainer {
+	flex: 0.05;
 }
 
 .userProfile {

@@ -9,6 +9,7 @@ import SeatGrid from "../components/page_components/reserve_page/SeatGrid";
 
 const BookingPage = () => {
 	const [data, setData] = useState([]);
+	const [movieName, setMovieName] = useState("");
 	const [selectedRoom, setSelectedRoom] = useState(0);
 	const [selectedSeats, setSelectedSeats] = useState([]);
 	const [selectedDate, setSelectedDate] = useState(new Date());
@@ -21,6 +22,8 @@ const BookingPage = () => {
 
 	//Manage requests based on date + manage ui
 	useEffect(() => {
+		//Clear any on-screen data
+		setSelectedSeats([]);
 		// When selectedDate updates
 		const today = new Date();
 		//Check if the selected date is today
@@ -29,7 +32,6 @@ const BookingPage = () => {
 				setShowHistory(false);
 			} else {
 				setShowHistory(true);
-				setSelectedSeats([]);
 			}
 		} else {
 			setShowHistory(false);
@@ -48,6 +50,9 @@ const BookingPage = () => {
 	useEffect(() => {
 		// Fetch or load the data here
 		const resData = {
+			movie: {
+				title: "Avatar 2",
+			},
 			rooms: [
 				{
 					roomId: 1,
@@ -82,6 +87,11 @@ const BookingPage = () => {
 						{ isReserved: false },
 						{ isReserved: false },
 						{ isReserved: true },
+					],
+					users: [
+						{ name: "Maik" },
+						{ name: "Vag" },
+						{ name: "Axil" },
 					],
 				},
 				{
@@ -118,11 +128,17 @@ const BookingPage = () => {
 						{ isReserved: true },
 						{ isReserved: false },
 					],
+					users: [
+						{ name: "AllosMaik" },
+						{ name: "AllosVag" },
+						{ name: "AllosAxil" },
+					],
 				},
 			],
 		};
 
 		setData(resData.rooms);
+		setMovieName(resData.movie.title);
 		// setSelectedRoom(resData.rooms[0]);
 	}, []);
 
@@ -133,7 +149,7 @@ const BookingPage = () => {
 
 	return (
 		<div className={classes.generalContainer}>
-			<p className={classes.titleBig}>[movie_title]</p>
+			<p className={classes.titleBig}>{movieName}</p>
 			<div className={classes.reserveContainer}>
 				<ColoredContainer className="colored_container__blue__reserve_side">
 					<div className={classes.verticalContainer}>
@@ -309,43 +325,37 @@ const BookingPage = () => {
 									Visitor History
 								</p>
 								<br />
-								<div className={classes.cartItems}>
-									{selectedSeats
-										.slice(0)
-										.reverse()
-										.map((seatData, index) => {
+								<div className={classes.userHistory}>
+									{data[selectedRoom].users.map(
+										(userData, index) => {
 											return (
 												<ColoredContainer
 													key={index}
-													className="colored_container__light_blue"
+													className="colored_container__light_blue_2"
 												>
-													<p
+													<div
 														className={
-															classes.titleMid
+															classes.profileContainer
 														}
 													>
-														Room: {seatData[0]}
-													</p>
+														<div
+															className={
+																classes.userProfile
+															}
+														></div>
+													</div>
+													<br></br>
 													<p
 														className={
-															classes.titleSmall
+															classes.titleSmall_Users
 														}
 													>
-														Seat: {seatData[1]} -
-														Cost: 15$
+														{userData.name}
 													</p>
-													<Button
-														value="Remove"
-														className="removeButton"
-														onClick={() => {
-															removeFromSelectedSeats(
-																seatData
-															);
-														}}
-													/>
 												</ColoredContainer>
 											);
-										})}
+										}
+									)}
 								</div>
 							</>
 						)}

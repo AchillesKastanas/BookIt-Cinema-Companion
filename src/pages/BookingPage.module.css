@@ -21,6 +21,13 @@
 	margin-bottom: 100px;
 }
 
+.cartItems {
+	flex: 2;
+	overflow: auto;
+	display: flex;
+	flex-direction: column-reverse;
+}
+
 .horizontalContainerCentered {
 	display: flex;
 	flex-direction: row;
@@ -69,6 +76,12 @@
 	font-size: 24px;
 }
 
+.titleSmall_Users {
+	font-weight: normal;
+	font-size: 24px;
+	margin-left: 10px;
+}
+
 .movieDetails {
 	display: flex;
 }
@@ -99,9 +112,24 @@
 	flex: 0.2;
 }
 
-.cartItems {
+.profileContainer {
+	flex: 0.05;
+}
+
+.userProfile {
+	height: 60px;
+	width: 60px;
+	border-radius: 8px;
+	background-color: white;
+	background-repeat: no-repeat;
+	background-size: 70%;
+	background-position: center;
+	background-image: url("../../public/user-icon.png");
+}
+
+.userHistory {
 	flex: 2;
 	overflow: auto;
 	display: flex;
-	flex-direction: column-reverse;
+	flex-direction: column;
 }
