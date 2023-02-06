@@ -5,7 +5,7 @@ import classes from "./InputContainer.module.css";
 import InputField from "../../general/InputField";
 import Button from "../../general/Button";
 
-const InputContainer = () => {
+const InputContainer = ({ onLogin }) => {
 	const navigate = useNavigate();
 
 	const clientId = process.env.REACT_APP_CLIENT_ID;
@@ -30,7 +30,11 @@ const InputContainer = () => {
 				<InputField placeholder="Password"></InputField>
 			</div>
 			<div className={classes.inputContainerBottom}>
-				<Button value="Login" className="red_button" />
+				<Button
+					value="Login"
+					className="red_button"
+					onClick={onLogin}
+				/>
 				<Button
 					value="Login with Google"
 					onClick={handleLoginWithGoogle}

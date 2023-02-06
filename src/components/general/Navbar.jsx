@@ -4,7 +4,7 @@ import { Link, useLocation } from "react-router-dom";
 import classes from "./Navbar.module.css";
 import Button from "../general/Button";
 
-const Navbar = () => {
+const Navbar = ({ handleLogout }) => {
 	const location = useLocation();
 
 	const handleBackButton = (e) => {
@@ -20,6 +20,15 @@ const Navbar = () => {
 						value="Go Back"
 						className="red_button"
 						onClick={handleBackButton}
+					/>
+				</div>
+			)}
+			{location.pathname !== "home" && (
+				<div className={classes.backButtonContainer}>
+					<Button
+						value="Logout"
+						className="red_button"
+						onClick={handleLogout}
 					/>
 				</div>
 			)}

@@ -4,7 +4,7 @@ import InputContainer from "../components/page_components/login_page/InputContai
 import classes from "./LoginPage.module.css";
 import ColoredContainer from "../components/general/ColoredContainer";
 
-const LoginPage = () => {
+const LoginPage = ({ onLogin }) => {
 	return (
 		<div className={classes.loginContainer}>
 			<div className={classes.leftChild}>
@@ -14,7 +14,7 @@ const LoginPage = () => {
 					className={"colored_container__red"}
 				></ColoredContainer>
 			</div>
-			<InputContainer></InputContainer>
+			<InputContainer onLogin={onLogin}></InputContainer>
 			<div className={classes.rightChild}>
 				<ColoredContainer
 					picUrl="/movie-poster-2.jpg"
