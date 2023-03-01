@@ -14,7 +14,6 @@ const AuthManager = ({ children }) => {
 		const jwt = sessionStorage.getItem("jwt");
 		if (jwt) {
 			// Verify JWT and set isLoggedIn to true if it's valid
-			// ...
 			setIsLoggedIn(true);
 		}
 		else {
@@ -22,18 +21,11 @@ const AuthManager = ({ children }) => {
 			// Redirect to login page
 			navigate("/login");
 		}
-	}, []);
-
-	//! MOVE THIS TO NAVBAR
-	const handleLogout = () => {
-		// Remove the JWT from session storage
-		sessionStorage.removeItem("jwt");
-		setIsLoggedIn(false);
-	};
+	}, [children]);
 
 	return isLoggedIn && (
 		<>
-			<Navbar handleLogout={handleLogout} />
+			<Navbar/>
 			{Children.map(children, (child, index) => child)}
 		</>
 	);
