@@ -19,9 +19,16 @@ const InputContainer = ({ onLogin }) => {
 		window.location.replace(url);
 	}
 
-	function handleClick() {
+	function goToRegister() {
 		navigate("/register");
 	}
+
+	const doLogin = () => {
+		// Store the JWT in session storage
+		let jwt = "1234567890";
+		sessionStorage.setItem("jwt", jwt);
+		navigate("/home");
+	};
 
 	return (
 		<div className={classes.inputContainer}>
@@ -33,13 +40,13 @@ const InputContainer = ({ onLogin }) => {
 				<Button
 					value="Login"
 					className="red_button"
-					onClick={onLogin}
+					onClick={doLogin}
 				/>
 				<Button
 					value="Login with Google"
 					onClick={handleLoginWithGoogle}
 				/>
-				<Button value="Sign Up" onClick={handleClick} />
+				<Button value="Sign Up" onClick={goToRegister} />
 			</div>
 		</div>
 	);

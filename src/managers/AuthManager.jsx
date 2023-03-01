@@ -1,4 +1,5 @@
 import React, { useState, Children, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
 import LoginPage from "../pages/LoginPage";
 import HomePage from "../pages/HomePage";
@@ -7,6 +8,7 @@ import Navbar from "../components/general/Navbar";
 
 const AuthManager = ({ children }) => {
 	const [isLoggedIn, setIsLoggedIn] = useState(false);
+	const navigate = useNavigate();
 
 	useEffect(() => {
 		const jwt = sessionStorage.getItem("jwt");
@@ -15,28 +17,25 @@ const AuthManager = ({ children }) => {
 			// ...
 			setIsLoggedIn(true);
 		}
+		else {
+			window.alert("Your session has expired. Please log in again.")
+			// Redirect to login page
+			navigate("/login");
+		}
 	}, []);
 
-	const handleLogin = (jwt) => {
-		// Store the JWT in session storage
-		sessionStorage.setItem("jwt", jwt);
-		setIsLoggedIn(true);
-	};
-
+	//! MOVE THIS TO NAVBAR
 	const handleLogout = () => {
 		// Remove the JWT from session storage
 		sessionStorage.removeItem("jwt");
 		setIsLoggedIn(false);
 	};
 
-	return isLoggedIn ? (
+	return isLoggedIn && (
 		<>
 			<Navbar handleLogout={handleLogout} />
 			{Children.map(children, (child, index) => child)}
 		</>
-	) : (
-		(window.alert("Your session has expired. Please log in again."),
-		(<LoginPage onLogin={handleLogin} />))
 	);
 };
 
