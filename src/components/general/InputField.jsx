@@ -2,7 +2,15 @@ import React from "react";
 
 import classes from "./InputField.module.css";
 
-const InputField = ({ value, label, name, placeholder, type, onChange }) => (
+const InputField = ({
+	value,
+	label,
+	name,
+	placeholder,
+	type,
+	onChange,
+	pattern,
+}) => (
 	<>
 		<input
 			type={type}
@@ -11,6 +19,7 @@ const InputField = ({ value, label, name, placeholder, type, onChange }) => (
 			className={classes.inputField}
 			onChange={onChange}
 			placeholder={placeholder}
+			pattern={pattern}
 		/>
 	</>
 );
