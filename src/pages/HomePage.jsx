@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 import classes from "./HomePage.module.css";
@@ -7,7 +7,39 @@ import MoviePoster from "../components/general/MoviePoster";
 import Button from "../components/general/Button";
 
 const HomePage = () => {
+	const [movies, setMovies] = useState([]);
 	const navigate = useNavigate();
+
+	useEffect(() => {
+		  fetch("http://localhost:5556/movies", {
+			method: "GET",
+			headers: {
+				"Content-Type": "application/json",
+			},
+		})
+		.then((response) => {
+			if (response.status !== 200) {
+				response.json().then((data) => {
+					alert(
+						"Details: " +
+						data.details +
+						"\nMessage: " +
+						data.message
+					);
+				});
+				throw Error(response.statusText);
+
+			} else {
+				response.json().then((data) => {
+					setMovies(data);
+					console.log(movies);
+				});
+			}
+		})
+		.catch((error) => {
+			console.error(error);
+		});
+	  }, []);
 
 	function handleClick() {
 		navigate("/reserve/MOVIE_ID");
@@ -15,27 +47,23 @@ const HomePage = () => {
 
 	return (
 		<div className={classes.homeContainer}>
-			<p className={classes.titleBig}>Welcome back [username]</p>
-			<p className={classes.titleSmall}>See whats currently playing</p>
-			<ColoredContainer className="colored_container__blue__movie_details">
+		<p className={classes.titleBig}>Welcome back [username]</p>
+		<p className={classes.titleSmall}>See what's currently playing</p>
+		{movies.map((movie, index) => (
+			<ColoredContainer
+			key={movie.movie_id}
+			className="colored_container__blue__movie_details"
+			>
 				<div className={classes.movieDetails}>
 					<div className={classes.movieDetailsPoster}>
 						<MoviePoster
-							picUrl="/movie-poster.jpg"
+							picUrl={movie.movie_image_link}
 							className="moviePosterSmall"
 						></MoviePoster>
 					</div>
 					<div className={classes.movieDetailsTitle}>
-						<p className={classes.movieDetailsTitleBig}>
-							Avatar: The Way of the Water
-						</p>
-						<p className={classes.movieDetailsTitleSmall}>
-							Jake Sully and Ney'tiri have formed a family and are
-							doing everything to stay together. However, they
-							must leave their home and explore the regions of
-							Pandora. When an ancient threat resurfaces, Jake
-							must fight a difficult war against the humans.
-						</p>
+						<p className={classes.movieDetailsTitleBig}>{movie.movieName}</p>
+						<p className={classes.movieDetailsTitleSmall}>{movie.movie_description}</p>
 					</div>
 					<div className={classes.movieDetailsButton}>
 						<Button
@@ -46,40 +74,15 @@ const HomePage = () => {
 					</div>
 				</div>
 			</ColoredContainer>
-			<ColoredContainer className="colored_container__blue__movie_details">
-				<div className={classes.movieDetails}>
-					<div className={classes.movieDetailsPoster}>
-						<MoviePoster
-							picUrl="/movie-poster-2.jpg"
-							className="moviePosterSmall"
-						></MoviePoster>
-					</div>
-					<div className={classes.movieDetailsTitle}>
-						<p className={classes.movieDetailsTitleBig}>
-							Oppenheimer
-						</p>
-						<p className={classes.movieDetailsTitleSmall}>
-							Physicist J Robert Oppenheimer works with a team of
-							scientists during the Manhattan Project, leading to
-							the development of the atomic bomb.
-						</p>
-					</div>
-					<div className={classes.movieDetailsButton}>
-						<Button
-							className="book_button"
-							value="Book now"
-							onClick={handleClick}
-						/>
-					</div>
-				</div>
-			</ColoredContainer>
-			<br />
-			<br />
-			<br />
-			<br />
-			<br />
-			<br />
-			<br />
+		))}
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
 		</div>
 	);
 };

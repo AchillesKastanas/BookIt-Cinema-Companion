@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 import classes from "./InputContainer.module.css";
@@ -25,13 +25,6 @@ const InputContainer = ({ onLogin }) => {
 	function goToRegister() {
 		navigate("/register");
 	}
-
-	const doLogin = () => {
-		// Store the JWT in session storage
-		let jwt = "1234567890";
-		sessionStorage.setItem("jwt", jwt);
-		navigate("/home");
-	};
 
 	const handleUsernameChange = (event) => {
 		const usernameInput = event.target;
