@@ -46,7 +46,9 @@ const HomePage = () => {
 
 	return (
 		<div className={classes.homeContainer}>
-			<p className={classes.titleBig}>Welcome back [username]</p>
+			<p className={classes.titleBig}>
+				Welcome back {sessionStorage.getItem("jwt")}
+			</p>
 			<p className={classes.titleSmall}>See what's currently playing</p>
 			{movies.map((movie, index) => (
 				<ColoredContainer
