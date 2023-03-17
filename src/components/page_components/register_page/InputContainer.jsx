@@ -27,12 +27,12 @@ const InputContainer = () => {
 
 		const formData = {
 			username,
-			password,
-			email,
 			mobile_number: phone,
+			password,
+			email
 		};
 
-		fetch("http://localhost:5556/customers", {
+		fetch("http://localhost:5556/customers/register", {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",
