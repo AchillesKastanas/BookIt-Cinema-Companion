@@ -224,29 +224,15 @@ const BookingPage = () => {
 								<br />
 								<br />
 								<div className={classes.horizontalContainer}>
-									{/* Foreach room in resData create a button that loads the corresponding room*/}
-									{data &&
-										data.map((room, index) =>
-											index === selectedRoom ? (
-												<Button
-													key={index}
-													value={`Room ${index + 1}`}
-													className="roomButtonActive"
-													onClick={() => {
-														setSelectedRoom(index);
-													}}
-												/>
-											) : (
-												<Button
-													key={index}
-													value={`Room ${index + 1}`}
-													className="roomButton"
-													onClick={() => {
-														setSelectedRoom(index);
-													}}
-												/>
-											)
-										)}
+									{/* For each room in data, create a button that loads the corresponding room */}
+									{data && data.map(({}, index) => (
+										<Button
+											key={index}
+											value={`Room ${index + 1}`}
+											className={index === selectedRoom ? "roomButtonActive" : "roomButton"}
+											onClick={() => setSelectedRoom(index)}
+										/>
+									))}
 								</div>
 								<p className={classes.titleBig}>
 									Available seats:
