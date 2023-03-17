@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-
+import { useParams } from "react-router-dom";
 import classes from "./BookingPage.module.css";
 import ColoredContainer from "../components/general/ColoredContainer";
 import MoviePoster from "../components/general/MoviePoster";
@@ -14,6 +14,9 @@ const BookingPage = () => {
 	const [selectedSeats, setSelectedSeats] = useState([]);
 	const [selectedDate, setSelectedDate] = useState(new Date());
 	const [showHistory, setShowHistory] = useState(false);
+	//Get the movieId from the url
+	const { id } = useParams();
+	console.log("movieId: ", id);
 
 	useEffect(() => {
 		// When the selectedSeats updates, update the cart
@@ -48,97 +51,44 @@ const BookingPage = () => {
 	};
 
 	useEffect(() => {
-		// Fetch or load the data here
-		const resData = {
-			movie: {
-				title: "Avatar 2",
-			},
-			rooms: [
-				{
-					roomId: 1,
-					seats: [
-						{ isReserved: false },
-						{ isReserved: false },
-						{ isReserved: false },
-						{ isReserved: true },
-						{ isReserved: true },
-						{ isReserved: true },
-						{ isReserved: false },
-						{ isReserved: false },
-						{ isReserved: true },
-						{ isReserved: true },
-						{ isReserved: true },
-						{ isReserved: true },
-						{ isReserved: false },
-						{ isReserved: false },
-						{ isReserved: true },
-						{ isReserved: true },
-						{ isReserved: true },
-						{ isReserved: true },
-						{ isReserved: false },
-						{ isReserved: false },
-						{ isReserved: true },
-						{ isReserved: true },
-						{ isReserved: true },
-						{ isReserved: true },
-						{ isReserved: false },
-						{ isReserved: false },
-						{ isReserved: true },
-						{ isReserved: false },
-						{ isReserved: false },
-						{ isReserved: true },
-					],
-					users: [
-						{ name: "Maik" },
-						{ name: "Vag" },
-						{ name: "Axil" },
-					],
-				},
-				{
-					roomId: 2,
-					seats: [
-						{ isReserved: true },
-						{ isReserved: true },
-						{ isReserved: false },
-						{ isReserved: true },
-						{ isReserved: true },
-						{ isReserved: true },
-						{ isReserved: false },
-						{ isReserved: false },
-						{ isReserved: true },
-						{ isReserved: false },
-						{ isReserved: true },
-						{ isReserved: false },
-						{ isReserved: true },
-						{ isReserved: false },
-						{ isReserved: false },
-						{ isReserved: true },
-						{ isReserved: true },
-						{ isReserved: false },
-						{ isReserved: false },
-						{ isReserved: false },
-						{ isReserved: true },
-						{ isReserved: false },
-						{ isReserved: true },
-						{ isReserved: true },
-						{ isReserved: false },
-						{ isReserved: false },
-						{ isReserved: true },
-						{ isReserved: false },
-						{ isReserved: true },
-						{ isReserved: false },
-					],
-					users: [
-						{ name: "AllosMaik" },
-						{ name: "AllosVag" },
-						{ name: "AllosAxil" },
-					],
-				},
-			],
-		};
 
-		setData(resData.rooms);
-		setMovieName(resData.movie.title);
+		// Convert selectedDate to a string with format "yyyy-mm-dd"
+		const date = selectedDate.toISOString().split("T")[0];
+		// log the type of date
+		console.log("date: ", typeof date, date);
+
+		// Fetch or load the data here
+		fetch("http://localhost:5556/findByMovieIdAndDate/" + id + "/" + date, {
+			method: "GET",
+			headers: {
+				"Content-Type": "application/json",
+			},
+		})
+			.then((response) => {
+				if (response.status !== 200) {
+					response.json().then((data) => {
+						alert(
+							"Details: " +
+								data.details +
+								"\nMessage: " +
+								data.message
+						);
+					});
+					throw Error(response.statusText);
+				} else {
+					response.json().then((data) => {
+						//setMovies(data);
+						console.log("Movies: ", data);
+					});
+				}
+			})
+			.catch((error) => {
+				console.error(error);
+			});
+		
+
+		//setData(resData.rooms);
+		//setMovieName(resData.movie.title);
 		// setSelectedRoom(resData.rooms[0]);
 	}, []);
 
