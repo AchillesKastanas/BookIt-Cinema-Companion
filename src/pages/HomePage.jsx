@@ -31,7 +31,7 @@ const HomePage = () => {
 				} else {
 					response.json().then((data) => {
 						setMovies(data);
-						console.log(movies);
+						console.log("Movies: ", data);
 					});
 				}
 			})
@@ -52,7 +52,7 @@ const HomePage = () => {
 			<p className={classes.titleSmall}>See what's currently playing</p>
 			{movies.map((movie, index) => (
 				<ColoredContainer
-					key={movie.movie_id}
+					key={movies.movieId}
 					className="colored_container__blue__movie_details"
 				>
 					<div className={classes.movieDetails}>
@@ -74,7 +74,7 @@ const HomePage = () => {
 							<Button
 								className="book_button"
 								value="Book now"
-								onClick={() => handleMovieClick(movie.movie_id)}
+								onClick={() => handleMovieClick(movie.movieId)}
 							/>
 						</div>
 					</div>
