@@ -5,6 +5,7 @@ import classes from "./LoginPage.module.css";
 import ColoredContainer from "../components/general/ColoredContainer";
 
 const LoginPage = () => {
+
 	return (
 		<div className={classes.loginContainer}>
 			<div className={classes.leftChild}>
