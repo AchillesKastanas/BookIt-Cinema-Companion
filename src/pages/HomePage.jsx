@@ -11,7 +11,7 @@ const HomePage = () => {
 	const navigate = useNavigate();
 
 	useEffect(() => {
-		fetch("http://localhost:5556/movies", {
+		fetch("http://localhost:5556/getAllMovies", {
 			method: "GET",
 			headers: {
 				"Content-Type": "application/json",

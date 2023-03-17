@@ -32,7 +32,7 @@ const InputContainer = () => {
 			email
 		};
 
-		fetch("http://localhost:5556/customers/register", {
+		fetch("http://localhost:5556/customer/register", {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",
