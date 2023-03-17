@@ -1,0 +1,135 @@
+button {
+	background-color: #f5f5f5;
+	border: none;
+	border-radius: 8px;
+	color: #181a1c;
+	font-weight: bold;
+	font-size: 20px;
+	padding: 15px 32px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	height: 75px;
+	width: 55%;
+	margin: 5px;
+	transition: all 0.3s ease-in;
+}
+
+button:hover {
+	background-color: #181a1c;
+	border: 3px solid #f5f5f5;
+	color: #f5f5f5;
+	cursor: pointer;
+}
+
+.red_button {
+	background-color: #f05454;
+}
+
+.red_button:hover {
+	background-color: #181a1c;
+	border: 3px solid #f05454;
+	color: #f05454;
+	cursor: pointer;
+}
+
+.green_button {
+	background-color: #80ff7d;
+	margin-top: 200px;
+	float: right;
+}
+
+.green_button:hover {
+	background-color: #181a1c;
+	border: 3px solid #80ff7d;
+	color: #80ff7d;
+	cursor: pointer;
+}
+
+.unclickable_button {
+	background-color: #181a1c;
+	color: #f05454;
+	margin-top: 200px;
+	float: right;
+}
+
+.unclickable_button:hover {
+	cursor: not-allowed;
+}
+
+.book_button {
+	margin-top: 200px;
+	float: right;
+}
+
+.roomButton {
+	background-color: #f5f5f5;
+	border: none;
+	border-radius: 8px;
+	color: #181a1c;
+	font-weight: bold;
+	font-size: 20px;
+	padding: 15px 32px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	height: 75px;
+	width: 200px;
+	margin: 5px;
+	transition: all 0.3s ease-in;
+}
+
+.roomButton:hover {
+	background-color: #181a1c;
+	border: 3px solid #f5f5f5;
+	color: #f5f5f5;
+	cursor: pointer;
+}
+
+.roomButtonActive {
+	background-color: #181a1c;
+	border: 3px solid #f5f5f5;
+	color: #f5f5f5;
+	cursor: pointer;
+	font-weight: bold;
+	font-size: 20px;
+	padding: 15px 32px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	height: 75px;
+	width: 200px;
+	margin: 5px;
+	transition: all 0.3s ease-in;
+}
+
+.removeButton {
+	background-color: #f5f5f5;
+	border: none;
+	border-radius: 8px;
+	color: #181a1c;
+	font-weight: bold;
+	font-size: 20px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	height: 55px;
+	width: 135px;
+	transition: all 0.3s ease-in;
+}
+
+.orderButton {
+	flex: 0.1;
+	background-color: #f5f5f5;
+	border: none;
+	border-radius: 8px;
+	color: #181a1c;
+	font-weight: bold;
+	font-size: 20px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	height: 55px;
+	width: 95%;
+	transition: all 0.3s ease-in;
+}

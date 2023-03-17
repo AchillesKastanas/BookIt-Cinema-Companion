@@ -1,0 +1,135 @@
+.reserveContainer {
+	background-color: #213243;
+	height: 100%;
+	width: 100%;
+	padding: 20px;
+	display: flex;
+	box-sizing: border-box;
+	color: #f5f5f5;
+}
+
+.verticalContainer {
+	height: 100%;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+}
+
+.horizontalContainer {
+	display: flex;
+	flex-direction: row;
+	margin-bottom: 100px;
+}
+
+.cartItems {
+	flex: 2;
+	overflow: auto;
+	display: flex;
+	flex-direction: column-reverse;
+}
+
+.horizontalContainerCentered {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+}
+
+.calendar {
+	width: 100%;
+	border-radius: 8px;
+	color: black;
+	max-width: 100%;
+	overflow: hidden;
+	font-size: 15px;
+}
+
+.calendar button {
+	font-size: 15px;
+	width: 10px;
+	height: 50px;
+}
+
+.generalContainer {
+	background-color: #213243;
+	color: #f5f5f5;
+	height: 100%;
+	width: 100%;
+	padding-top: 20px;
+}
+
+.titleBig {
+	font-weight: bold;
+	margin: 0px;
+	font-size: 32px;
+	padding-left: 20px;
+}
+
+.titleMid {
+	font-weight: semi-bold;
+	margin-top: 5px;
+	font-size: 28px;
+}
+
+.titleSmall {
+	font-weight: normal;
+	margin-top: 0px;
+	font-size: 24px;
+}
+
+.titleSmall_Users {
+	font-weight: normal;
+	font-size: 24px;
+	margin-left: 10px;
+}
+
+.movieDetails {
+	display: flex;
+}
+
+.movieDetailsPoster {
+	flex: 0.1;
+}
+
+.movieDetailsTitle {
+	flex: 0.8;
+}
+
+.movieDetailsTitleBig {
+	font-weight: bold;
+	margin: 0px;
+	font-size: 32px;
+	margin-left: 20px;
+}
+
+.movieDetailsTitleSmall {
+	font-weight: normal;
+	margin-top: 5px;
+	font-size: 24px;
+	margin-left: 20px;
+}
+
+.movieDetailsButton {
+	flex: 0.2;
+}
+
+.profileContainer {
+	flex: 0.05;
+}
+
+.userProfile {
+	height: 60px;
+	width: 60px;
+	border-radius: 8px;
+	background-color: white;
+	background-repeat: no-repeat;
+	background-size: 70%;
+	background-position: center;
+	background-image: url("../../public/user-icon.png");
+}
+
+.userHistory {
+	flex: 2;
+	overflow: auto;
+	display: flex;
+	flex-direction: column;
+}
