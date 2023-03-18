@@ -8,6 +8,10 @@ const SeatGrid = ({ room, addToSelectedSeats }) => {
 			{Array.isArray(room) && (
 				<div className={classes.gridContainer}>
 					{room.map((seat, index) => {
+						console.log(
+							"I am the grid, this is the roomdID of the seat: ",
+							seat.roomID
+						);
 						return (
 							<div
 								className={
@@ -20,8 +24,9 @@ const SeatGrid = ({ room, addToSelectedSeats }) => {
 									seat.status === "AVAILABLE"
 										? () =>
 												addToSelectedSeats([
-													room.roomID,
 													seat.seatId,
+													seat.roomID,
+													seat.seatNumber,
 												])
 										: undefined
 								}

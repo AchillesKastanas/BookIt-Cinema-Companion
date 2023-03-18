@@ -10,17 +10,12 @@ import SeatGrid from "../components/page_components/reserve_page/SeatGrid";
 const BookingPage = () => {
 	const [roomSeats, setRoomSeats] = useState([]);
 	const [movieName, setMovieName] = useState("");
-	const [selectedRoom, setSelectedRoom] = useState(0);
+	const [selectedRoom, setSelectedRoom] = useState(1);
 	const [selectedSeats, setSelectedSeats] = useState([]);
 	const [selectedDate, setSelectedDate] = useState(new Date());
 	const [showHistory, setShowHistory] = useState(false);
 	//Get the movieId from the url
 	const { id } = useParams();
-
-	useEffect(() => {
-		// When the selectedSeats updates, update the cart
-		//console.log("useEffect", selectedSeats);
-	}, [selectedSeats]);
 
 	//Manage requests based on date + manage ui
 	useEffect(() => {
@@ -41,12 +36,76 @@ const BookingPage = () => {
 	}, [selectedDate]);
 
 	const addToSelectedSeats = (seatData) => {
+		console.log(
+			"I AM GOING TO ADD THIS SEAT TO THE SELECTED LIST: ",
+			seatData
+		);
 		!selectedSeats.includes(seatData) &&
 			setSelectedSeats([...selectedSeats, seatData]);
 	};
 
 	const removeFromSelectedSeats = (seatData) => {
 		setSelectedSeats(selectedSeats.filter((seat) => seat !== seatData));
+	};
+
+	const bookSelectedSeats = () => {
+		for (let i = 0; i < selectedSeats.length; i++) {
+			const seatId = selectedSeats[i][0];
+			const roomId = selectedSeats[i][1];
+			const seatNumber = selectedSeats[i][2];
+
+			console.log(
+				`Seat ${seatId} in room ${roomId} with seat number ${seatNumber} is getting booked. For movie ${id} on ${selectedDate}`
+			);
+
+			// Convert selectedDate to a string with format "yyyy-mm-dd" in a greek timezone
+			const options = {
+				year: "numeric",
+				month: "2-digit",
+				day: "2-digit",
+				timeZone: "Europe/Athens",
+			};
+			const greekDate = selectedDate.toLocaleDateString("el-GR", options);
+			// format as yyyy-mm-dd
+			const date = greekDate.split("/").reverse().join("-");
+
+			// send post request to "/seat/add" for each seat
+			fetch("http://localhost:5556/updateSeat", {
+				method: "PUT",
+				body: JSON.stringify({
+					seatId: seatId,
+					movieId: parseInt(id, 10),
+					seatNumber: seatNumber,
+					status: "BOOKED",
+					price: 10,
+					date: date,
+					roomID: roomId,
+				}),
+				headers: {
+					"Content-Type": "application/json",
+				},
+			}).then((response) => {
+				if (response.status !== 200) {
+					response.json().then((data) => {
+						alert(
+							"Details: " +
+								data.details +
+								"\nMessage: " +
+								data.message
+						);
+					});
+					throw Error(response.statusText);
+				} else {
+					response.json().then((data) => {
+						alert(`Booked seat ${seatId} successfully!`);
+						// Clear selected seats
+						setSelectedSeats([]);
+						// Refresh the page
+						window.location.reload();
+					});
+				}
+			});
+		}
 	};
 
 	//useEffect to fetch the data from /getAllMovies and get the movieName
@@ -85,7 +144,6 @@ const BookingPage = () => {
 	}, []);
 
 	useEffect(() => {
-		console.log("useEffect of selectedDate: ", selectedDate);
 		// Convert selectedDate to a string with format "yyyy-mm-dd" in a greek timezone
 		const options = {
 			year: "numeric",
@@ -124,22 +182,22 @@ const BookingPage = () => {
 						const room2 = [];
 						seats.forEach((seat, index) => {
 							if (index % 2 === 0) {
-								room1.push(seat);
-							} else {
 								room2.push(seat);
+							} else {
+								room1.push(seat);
 							}
 						});
 						setRoomSeats([room1, room2]);
+						console.log(
+							"The current seats (60) for this page in RoomSeats are: ",
+							roomSeats
+						);
 					});
 				}
 			})
 			.catch((error) => {
 				console.error(error);
 			});
-
-		//setData(resData.rooms);
-		//setMovieName(resData.movie.title);
-		// setSelectedRoom(resData.rooms[0]);
 	}, [selectedDate]);
 
 	//Check if date is older than today. Compare only the date, not the time
@@ -178,20 +236,24 @@ const BookingPage = () => {
 										<Button
 											value="Room 1"
 											className={
-												selectedRoom === 0
-													? "roomButtonActive"
-													: "roomButton"
-											}
-											onClick={() => setSelectedRoom(0)}
-										/>
-										<Button
-											value="Room 2"
-											className={
 												selectedRoom === 1
 													? "roomButtonActive"
 													: "roomButton"
 											}
-											onClick={() => setSelectedRoom(1)}
+											onClick={() => {
+												setSelectedRoom(1);
+											}}
+										/>
+										<Button
+											value="Room 2"
+											className={
+												selectedRoom === 2
+													? "roomButtonActive"
+													: "roomButton"
+											}
+											onClick={() => {
+												setSelectedRoom(2);
+											}}
 										/>
 									</div>
 								</div>
@@ -205,10 +267,10 @@ const BookingPage = () => {
 								>
 									<SeatGrid
 										room={
-											typeof roomSeats[selectedRoom] !==
-												"undefined" &&
-											//! INSERT THE 30 SEATS HERE
-											roomSeats[selectedRoom]
+											typeof roomSeats[
+												selectedRoom - 1
+											] !== "undefined" &&
+											roomSeats[selectedRoom - 1]
 										}
 										addToSelectedSeats={addToSelectedSeats}
 									/>
@@ -225,22 +287,26 @@ const BookingPage = () => {
 									<button
 										value="Room 1"
 										className={
-											selectedRoom === 0
+											selectedRoom === 1
 												? "roomButtonActive"
 												: "roomButton"
 										}
-										onClick={() => setSelectedRoom(0)}
+										onClick={() => {
+											setSelectedRoom(1);
+										}}
 									>
 										Room 1
 									</button>
 									<button
 										value="Room 2"
 										className={
-											selectedRoom === 1
+											selectedRoom === 2
 												? "roomButtonActive"
 												: "roomButton"
 										}
-										onClick={() => setSelectedRoom(1)}
+										onClick={() => {
+											setSelectedRoom(2);
+										}}
 									>
 										Room 2
 									</button>
@@ -255,10 +321,10 @@ const BookingPage = () => {
 								>
 									<SeatGrid
 										room={
-											typeof roomSeats[selectedRoom] !==
-												"undefined" &&
-											//! INSERT THE 30 SEATS HERE
-											roomSeats[selectedRoom]
+											typeof roomSeats[
+												selectedRoom - 1
+											] !== "undefined" &&
+											roomSeats[selectedRoom - 1]
 										}
 									/>
 								</div>
@@ -273,6 +339,10 @@ const BookingPage = () => {
 								<p className={classes.titleBig}>Your Cart</p>
 								<br />
 								<div className={classes.cartItems}>
+									{console.log(
+										"ADDED TO CART: ",
+										selectedSeats
+									)}
 									{selectedSeats
 										.slice(0)
 										.reverse()
@@ -287,15 +357,15 @@ const BookingPage = () => {
 															classes.titleMid
 														}
 													>
-														Room: {seatData[0]}
+														Room: {seatData[1]}
 													</p>
 													<p
 														className={
 															classes.titleSmall
 														}
 													>
-														Seat: {seatData[1]} -
-														Cost: 15$
+														Seat: {seatData[2]} -
+														Cost: 10$
 													</p>
 													<Button
 														value="Remove"
@@ -314,6 +384,9 @@ const BookingPage = () => {
 									<Button
 										value="Order Now"
 										className="orderButton"
+										onClick={() => {
+											bookSelectedSeats();
+										}}
 									/>
 								)}
 							</>
