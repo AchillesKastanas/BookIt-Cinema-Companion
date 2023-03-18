@@ -49,6 +49,39 @@ const BookingPage = () => {
 		setSelectedSeats(selectedSeats.filter((seat) => seat !== seatData));
 	};
 
+	//useEffect to fetch the data from /getAllMovies
+	useEffect(() => {
+		// Fetch or load the data here
+		fetch("http://localhost:5556/getAllMovies", {
+			method: "GET",
+			headers: {
+				"Content-Type": "application/json",
+			},
+		})
+			.then((response) => {
+				if (response.status !== 200) {
+					response.json().then((data) => {
+						alert(
+							"Details: " +
+								data.details +
+								"\nMessage: " +
+								data.message
+						);
+					});
+					throw Error(response.statusText);
+				} else {
+					response.json().then((data) => {
+						//log the data
+						console.log(data);
+						//nothing to do here
+					});
+				}
+			})
+			.catch((error) => {
+				console.error(error);
+			});
+	}, []);
+
 	useEffect(() => {
 		console.log("useEffect of selectedDate: ", selectedDate);
 		// Convert selectedDate to a string with format "yyyy-mm-dd" in a greek timezone
