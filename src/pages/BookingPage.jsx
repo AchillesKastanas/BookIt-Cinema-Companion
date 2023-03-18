@@ -8,7 +8,7 @@ import Calendar from "short-react-calendar";
 import SeatGrid from "../components/page_components/reserve_page/SeatGrid";
 
 const BookingPage = () => {
-	const [data, setData] = useState([]);
+	const [roomSeats, setRoomSeats] = useState([]);
 	const [movieName, setMovieName] = useState("");
 	const [selectedRoom, setSelectedRoom] = useState(0);
 	const [selectedSeats, setSelectedSeats] = useState([]);
@@ -52,10 +52,15 @@ const BookingPage = () => {
 	useEffect(() => {
 		console.log("useEffect of selectedDate: ", selectedDate);
 		// Convert selectedDate to a string with format "yyyy-mm-dd" in a greek timezone
-		const options = { year: 'numeric', month: '2-digit', day: '2-digit', timeZone: 'Europe/Athens' };
-		const greekDate = selectedDate.toLocaleDateString('el-GR', options);
+		const options = {
+			year: "numeric",
+			month: "2-digit",
+			day: "2-digit",
+			timeZone: "Europe/Athens",
+		};
+		const greekDate = selectedDate.toLocaleDateString("el-GR", options);
 		// format as yyyy-mm-dd
-		const date = greekDate.split('/').reverse().join('-'); 
+		const date = greekDate.split("/").reverse().join("-");
 
 		// Fetch or load the data here
 		fetch("http://localhost:5556/findByMovieIdAndDate/" + id + "/" + date, {
@@ -77,15 +82,25 @@ const BookingPage = () => {
 					throw Error(response.statusText);
 				} else {
 					response.json().then((data) => {
-						//setMovies(data);
-						console.log("Movies: ", data);
+						const seats = data.sort(
+							(a, b) => a.seatNumber - b.seatNumber
+						);
+						const room1 = [];
+						const room2 = [];
+						seats.forEach((seat, index) => {
+							if (index % 2 === 0) {
+								room1.push(seat);
+							} else {
+								room2.push(seat);
+							}
+						});
+						setRoomSeats([room1, room2]);
 					});
 				}
 			})
 			.catch((error) => {
 				console.error(error);
 			});
-		
 
 		//setData(resData.rooms);
 		//setMovieName(resData.movie.title);
@@ -124,33 +139,30 @@ const BookingPage = () => {
 								<br />
 								<br />
 								<div className={classes.horizontalContainer}>
-									{/* Foreach room in resData create a button that loads the corresponding room*/}
-									{data &&
-										data.map((room, index) =>
-											index === selectedRoom ? (
-												<Button
-													key={index}
-													value={`Room ${index + 1}`}
-													className="roomButtonActive"
-													onClick={() => {
-														setSelectedRoom(index);
-													}}
-												/>
-											) : (
-												<Button
-													key={index}
-													value={`Room ${index + 1}`}
-													className="roomButton"
-													onClick={() => {
-														setSelectedRoom(index);
-													}}
-												/>
-											)
-										)}
+									<div>
+										<Button
+											value="Room 1"
+											className={
+												selectedRoom === 0
+													? "roomButtonActive"
+													: "roomButton"
+											}
+											onClick={() => setSelectedRoom(0)}
+										/>
+										<Button
+											value="Room 2"
+											className={
+												selectedRoom === 1
+													? "roomButtonActive"
+													: "roomButton"
+											}
+											onClick={() => setSelectedRoom(1)}
+										/>
+									</div>
 								</div>
-								<p className={classes.titleBig}>
+								<span className={classes.titleBig}>
 									Available seats:
-								</p>
+								</span>
 								<div
 									className={
 										classes.horizontalContainerCentered
@@ -158,9 +170,10 @@ const BookingPage = () => {
 								>
 									<SeatGrid
 										room={
-											typeof data[selectedRoom] !==
+											typeof roomSeats[selectedRoom] !==
 												"undefined" &&
-											data[selectedRoom]
+											//! INSERT THE 30 SEATS HERE
+											roomSeats[selectedRoom]
 										}
 										addToSelectedSeats={addToSelectedSeats}
 									/>
@@ -174,19 +187,32 @@ const BookingPage = () => {
 								<br />
 								<br />
 								<div className={classes.horizontalContainer}>
-									{/* For each room in data, create a button that loads the corresponding room */}
-									{data && data.map(({}, index) => (
-										<Button
-											key={index}
-											value={`Room ${index + 1}`}
-											className={index === selectedRoom ? "roomButtonActive" : "roomButton"}
-											onClick={() => setSelectedRoom(index)}
-										/>
-									))}
+									<button
+										value="Room 1"
+										className={
+											selectedRoom === 0
+												? "roomButtonActive"
+												: "roomButton"
+										}
+										onClick={() => setSelectedRoom(0)}
+									>
+										Room 1
+									</button>
+									<button
+										value="Room 2"
+										className={
+											selectedRoom === 1
+												? "roomButtonActive"
+												: "roomButton"
+										}
+										onClick={() => setSelectedRoom(1)}
+									>
+										Room 2
+									</button>
 								</div>
-								<p className={classes.titleBig}>
+								<span className={classes.titleBig}>
 									Available seats:
-								</p>
+								</span>
 								<div
 									className={
 										classes.horizontalContainerCentered
@@ -194,9 +220,10 @@ const BookingPage = () => {
 								>
 									<SeatGrid
 										room={
-											typeof data[selectedRoom] !==
+											typeof roomSeats[selectedRoom] !==
 												"undefined" &&
-											data[selectedRoom]
+											//! INSERT THE 30 SEATS HERE
+											roomSeats[selectedRoom]
 										}
 									/>
 								</div>
@@ -262,7 +289,8 @@ const BookingPage = () => {
 								</p>
 								<br />
 								<div className={classes.userHistory}>
-									{data[selectedRoom].users.map(
+									//TODO: SETUP THE USER HISTORY
+									{/* {data[selectedRoom].users.map(
 										(userData, index) => {
 											return (
 												<ColoredContainer
@@ -291,7 +319,7 @@ const BookingPage = () => {
 												</ColoredContainer>
 											);
 										}
-									)}
+									)} */}
 								</div>
 							</>
 						)}
