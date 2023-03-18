@@ -16,7 +16,6 @@ const BookingPage = () => {
 	const [showHistory, setShowHistory] = useState(false);
 	//Get the movieId from the url
 	const { id } = useParams();
-	console.log("movieId: ", id);
 
 	useEffect(() => {
 		// When the selectedSeats updates, update the cart
@@ -51,11 +50,12 @@ const BookingPage = () => {
 	};
 
 	useEffect(() => {
-
-		// Convert selectedDate to a string with format "yyyy-mm-dd"
-		const date = selectedDate.toISOString().split("T")[0];
-		// log the type of date
-		console.log("date: ", typeof date, date);
+		console.log("useEffect of selectedDate: ", selectedDate);
+		// Convert selectedDate to a string with format "yyyy-mm-dd" in a greek timezone
+		const options = { year: 'numeric', month: '2-digit', day: '2-digit', timeZone: 'Europe/Athens' };
+		const greekDate = selectedDate.toLocaleDateString('el-GR', options);
+		// format as yyyy-mm-dd
+		const date = greekDate.split('/').reverse().join('-'); 
 
 		// Fetch or load the data here
 		fetch("http://localhost:5556/findByMovieIdAndDate/" + id + "/" + date, {
@@ -90,7 +90,7 @@ const BookingPage = () => {
 		//setData(resData.rooms);
 		//setMovieName(resData.movie.title);
 		// setSelectedRoom(resData.rooms[0]);
-	}, []);
+	}, [selectedDate]);
 
 	//Check if date is older than today. Compare only the date, not the time
 	const checkDate = (date) => {
