@@ -49,7 +49,7 @@ const BookingPage = () => {
 		setSelectedSeats(selectedSeats.filter((seat) => seat !== seatData));
 	};
 
-	//useEffect to fetch the data from /getAllMovies
+	//useEffect to fetch the data from /getAllMovies and get the movieName
 	useEffect(() => {
 		// Fetch or load the data here
 		fetch("http://localhost:5556/getAllMovies", {
@@ -71,9 +71,11 @@ const BookingPage = () => {
 					throw Error(response.statusText);
 				} else {
 					response.json().then((data) => {
-						//log the data
-						console.log(data);
-						//nothing to do here
+						for (let i = 0; i < data.length; i++) {
+							if (data[i].movieId === parseInt(id, 10)) {
+								setMovieName(data[i].movieName);
+							}
+						}
 					});
 				}
 			})
