@@ -397,37 +397,45 @@ const BookingPage = () => {
 								</p>
 								<br />
 								<div className={classes.userHistory}>
-									//TODO: SETUP THE USER HISTORY
-									{/* {data[selectedRoom].users.map(
-										(userData, index) => {
-											return (
-												<ColoredContainer
-													key={index}
-													className="colored_container__light_blue_2"
-												>
-													<div
-														className={
-															classes.profileContainer
-														}
-													>
-														<div
-															className={
-																classes.userProfile
-															}
-														></div>
-													</div>
-													<br></br>
-													<p
-														className={
-															classes.titleSmall_Users
-														}
-													>
-														{userData.name}
-													</p>
-												</ColoredContainer>
-											);
-										}
-									)} */}
+									<ColoredContainer className="colored_container__light_blue_2">
+										<div
+											className={classes.profileContainer}
+										>
+											<div
+												className={classes.userProfile}
+											></div>
+										</div>
+										<br />
+										<p className={classes.titleSmall_Users}>
+											Achilles
+										</p>
+									</ColoredContainer>
+									<ColoredContainer className="colored_container__light_blue_2">
+										<div
+											className={classes.profileContainer}
+										>
+											<div
+												className={classes.userProfile}
+											></div>
+										</div>
+										<br />
+										<p className={classes.titleSmall_Users}>
+											Maik
+										</p>
+									</ColoredContainer>
+									<ColoredContainer className="colored_container__light_blue_2">
+										<div
+											className={classes.profileContainer}
+										>
+											<div
+												className={classes.userProfile}
+											></div>
+										</div>
+										<br />
+										<p className={classes.titleSmall_Users}>
+											Vaggelis
+										</p>
+									</ColoredContainer>
 								</div>
 							</>
 						)}
