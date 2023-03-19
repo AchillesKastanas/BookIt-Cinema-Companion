@@ -6,8 +6,8 @@ import InputField from "../../general/InputField";
 import Button from "../../general/Button";
 
 const InputContainer = ({ onLogin }) => {
-	const [username, setUsername] = useState("achilles");
-	const [password, setPassword] = useState("Achilles123");
+	const [username, setUsername] = useState("");
+	const [password, setPassword] = useState("");
 	const isFormValid = (username && password) !== "";
 	const navigate = useNavigate();
 
@@ -117,6 +117,7 @@ const InputContainer = ({ onLogin }) => {
 				<Button
 					value="Login with Google"
 					onClick={handleLoginWithGoogle}
+					icon="https://cdn-icons-png.flaticon.com/512/300/300221.png"
 				/>
 				<Button value="Sign Up" onClick={goToRegister} />
 			</div>

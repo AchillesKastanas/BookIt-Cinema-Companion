@@ -1,6 +1,9 @@
 import React, { useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
 function HandleOAuth2Callback({ code, scope, authuser, prompt }) {
+	const navigate = useNavigate();
+
 	const checkLoginSuccess = () => {
 		if (code && scope && authuser && prompt) {
 			console.log("Login was successful!");
@@ -18,14 +21,13 @@ function HandleOAuth2Callback({ code, scope, authuser, prompt }) {
 		console.log("prompt" + prompt);
 
 		if (checkLoginSuccess()) {
-			// Use the code to exchange for an access token
-			// ...
-
+			//Store the new JWT in the session storage
+			sessionStorage.setItem("jwt", "!");
 			// Redirect to the home page once the access token is obtained
-			window.location.replace("http://localhost:3000/home");
+			navigate("/home");
 		} else {
 			alert("Login failed.");
-			window.location.replace("http://localhost:3000/login");
+			navigate("/login");
 		}
 	}, []);
 

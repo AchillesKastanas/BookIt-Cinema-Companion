@@ -1,5 +1,9 @@
-import React, { useState } from "react";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import {
+	createBrowserRouter,
+	RouterProvider,
+	Navigate,
+} from "react-router-dom";
 import "./App.css";
 
 import RegisterPage from "./pages/RegisterPage";
@@ -12,6 +16,10 @@ import HandleOAuth2Callback from "./managers/HandleOAuth2Callback";
 
 //If the link is something else than /login or /register check if user is logged in, in AuthManager
 const router = createBrowserRouter([
+	{
+		path: "*",
+		element: <Navigate to="/login" />,
+	},
 	{
 		path: "home",
 		element: (

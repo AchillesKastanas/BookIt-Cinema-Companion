@@ -6,10 +6,10 @@ import InputField from "../../general/InputField";
 import Button from "../../general/Button";
 
 const InputContainer = () => {
-	const [username, setUsername] = useState("achilles");
-	const [password, setPassword] = useState("Achilles123");
-	const [email, setEmail] = useState("achilleasrinos@gmail.com");
-	const [phone, setPhone] = useState("1234567890");
+	const [username, setUsername] = useState("");
+	const [password, setPassword] = useState("");
+	const [email, setEmail] = useState("");
+	const [phone, setPhone] = useState("");
 	const isFormValid = (username && password && email && phone) !== "";
 	console.log(isFormValid);
 	const navigate = useNavigate();
@@ -29,7 +29,7 @@ const InputContainer = () => {
 			username,
 			mobile_number: phone,
 			password,
-			email
+			email,
 		};
 
 		fetch("http://localhost:5556/customer/register", {
