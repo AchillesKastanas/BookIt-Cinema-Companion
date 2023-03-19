@@ -1,0 +1,91 @@
+.modal {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 8px;
+	background-color: rgba(0, 0, 0, 0.4);
+	animation: modalPopup 0.3s ease-in-out;
+	backdrop-filter: blur(10px);
+}
+
+@keyframes modalPopup {
+	0% {
+		opacity: 0;
+		transform: scale(0.7);
+	}
+	70% {
+		opacity: 1;
+		transform: scale(1.2);
+	}
+	100% {
+		opacity: 1;
+		transform: scale(1);
+	}
+}
+
+.modalHeader {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100px;
+	display: flex;
+	justify-content: left;
+	align-items: center;
+	color: #213243;
+	background-color: white;
+	border-radius: 4px 4px 0 0;
+}
+
+.modalContent {
+	position: relative;
+	text-align: center;
+	width: 800px;
+	max-width: 90%;
+	max-height: 80%;
+	background-color: #213243;
+	border-radius: 4px;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+	padding: 16px;
+	padding-top: 120px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.closeButton {
+	position: absolute;
+	top: 8px;
+	right: 8px;
+	background-color: transparent;
+	border: none;
+	cursor: pointer;
+	font-size: 20px;
+	color: rgba(0, 0, 0, 0.54);
+	outline: none;
+	width: 100px;
+}
+
+.titleBig {
+	font-weight: bold;
+	margin: 0px;
+	font-size: 32px;
+}
+
+.titleMid {
+	font-weight: semi-bold;
+	margin-top: 5px;
+	font-size: 28px;
+}
+
+.titleSmall {
+	font-weight: normal;
+	margin-top: 0px;
+	font-size: 24px;
+}

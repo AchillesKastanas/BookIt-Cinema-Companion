@@ -6,6 +6,7 @@ import MoviePoster from "../components/general/MoviePoster";
 import Button from "../components/general/Button";
 import Calendar from "short-react-calendar";
 import SeatGrid from "../components/page_components/reserve_page/SeatGrid";
+import ModalWindow from "../components/page_components/booking_page/ModalWindow";
 
 const BookingPage = () => {
 	const [roomSeats, setRoomSeats] = useState([]);
@@ -14,6 +15,8 @@ const BookingPage = () => {
 	const [selectedSeats, setSelectedSeats] = useState([]);
 	const [selectedDate, setSelectedDate] = useState(new Date());
 	const [showHistory, setShowHistory] = useState(false);
+	const [isModalOpen, setIsModalOpen] = useState(false);
+
 	//Get the movieId from the url
 	const { id } = useParams();
 
@@ -36,10 +39,6 @@ const BookingPage = () => {
 	}, [selectedDate]);
 
 	const addToSelectedSeats = (seatData) => {
-		console.log(
-			"I AM GOING TO ADD THIS SEAT TO THE SELECTED LIST: ",
-			seatData
-		);
 		!selectedSeats.includes(seatData) &&
 			setSelectedSeats([...selectedSeats, seatData]);
 	};
@@ -48,15 +47,18 @@ const BookingPage = () => {
 		setSelectedSeats(selectedSeats.filter((seat) => seat !== seatData));
 	};
 
+	function closeModal() {
+		// Close the confirmation modal
+		setIsModalOpen(false);
+		// Refresh the page
+		window.location.reload();
+	}
+
 	const bookSelectedSeats = () => {
 		for (let i = 0; i < selectedSeats.length; i++) {
 			const seatId = selectedSeats[i][0];
 			const roomId = selectedSeats[i][1];
 			const seatNumber = selectedSeats[i][2];
-
-			console.log(
-				`Seat ${seatId} in room ${roomId} with seat number ${seatNumber} is getting booked. For movie ${id} on ${selectedDate}`
-			);
 
 			// Convert selectedDate to a string with format "yyyy-mm-dd" in a greek timezone
 			const options = {
@@ -97,11 +99,10 @@ const BookingPage = () => {
 					throw Error(response.statusText);
 				} else {
 					response.json().then((data) => {
-						alert(`Booked seat ${seatId} successfully!`);
 						// Clear selected seats
 						setSelectedSeats([]);
-						// Refresh the page
-						window.location.reload();
+						// Show the confirmation modal
+						setIsModalOpen(true);
 					});
 				}
 			});
@@ -188,10 +189,6 @@ const BookingPage = () => {
 							}
 						});
 						setRoomSeats([room1, room2]);
-						console.log(
-							"The current seats (60) for this page in RoomSeats are: ",
-							roomSeats
-						);
 					});
 				}
 			})
@@ -339,10 +336,6 @@ const BookingPage = () => {
 								<p className={classes.titleBig}>Your Cart</p>
 								<br />
 								<div className={classes.cartItems}>
-									{console.log(
-										"ADDED TO CART: ",
-										selectedSeats
-									)}
 									{selectedSeats
 										.slice(0)
 										.reverse()
@@ -442,6 +435,9 @@ const BookingPage = () => {
 					</div>
 				</ColoredContainer>
 			</div>
+			{isModalOpen && (
+				<ModalWindow date={selectedDate} onClose={closeModal} />
+			)}
 		</div>
 	);
 };
